@@ -36,7 +36,7 @@ const ToolList = ({ selectedOS }: { selectedOS: string }) => {
     <div className="tool-list">
       <Snackbar
         open={showNotification}
-        autoHideDuration={6000}
+        autoHideDuration={1000}
         onClose={handleCopyClose}
       >
         <Alert
@@ -45,7 +45,7 @@ const ToolList = ({ selectedOS }: { selectedOS: string }) => {
           variant="filled"
           sx={{ width: "100%" }}
         >
-          This is a success Alert inside a Snackbar!
+          Copied to clipboard!
         </Alert>
       </Snackbar>
       <h2 className="tooltype-heading">Setup Tools</h2>
