@@ -10,16 +10,26 @@ import {
   Alert,
 } from "@mui/material";
 import "./ToolList.css";
-import { CloudDownload } from "@mui/icons-material";
-import { envTools, platformTools, testTools } from "./Tools";
+import { ArrowRightAlt, CloudDownload } from "@mui/icons-material";
+import { envTools, platformTools, testTools, Tool } from "./Tools";
 import { useState } from "react";
 
 const ToolList = ({ selectedOS }: { selectedOS: string }) => {
   const [showNotification, setShowNotification] = useState(false);
+  const [selectedTools, setSelectedTools] = useState<Tool[]>([]); // Change to store Tool objects
+
+  const handleToolSelection = (tool: Tool) => {
+    setSelectedTools((prev) =>
+      prev.find((t) => t.name === tool.name)
+        ? prev.filter((t) => t.name !== tool.name)
+        : [...prev, tool]
+    );
+  };
 
   const handleCopyClick = () => {
     setShowNotification(true);
   };
+  // console.log({ selectedTools });
 
   const handleCopyClose = (
     event?: React.SyntheticEvent | Event,
@@ -52,7 +62,11 @@ const ToolList = ({ selectedOS }: { selectedOS: string }) => {
       <div className="tool-card-container">
         {envTools.map((tool, index) => (
           <Card className="tool-card" key={index}>
-            <Checkbox color="primary" className="tool-checkbox" />
+            <Checkbox
+              color="primary"
+              className="tool-checkbox"
+              onChange={() => handleToolSelection(tool)}
+            />
             <CardMedia
               component="img"
               alt={tool.name}
@@ -112,7 +126,12 @@ const ToolList = ({ selectedOS }: { selectedOS: string }) => {
       <div className="tool-card-container">
         {testTools.map((tool, index) => (
           <Card className="tool-card" key={index}>
-            <Checkbox color="primary" className="tool-checkbox" />
+            <Checkbox
+              color="primary"
+              className="tool-checkbox"
+              onChange={() => handleToolSelection(tool)}
+            />
+
             <CardMedia
               component="img"
               alt={tool.name}
@@ -172,7 +191,12 @@ const ToolList = ({ selectedOS }: { selectedOS: string }) => {
       <div className="tool-card-container">
         {platformTools.map((tool, index) => (
           <Card className="tool-card" key={index}>
-            <Checkbox color="primary" className="tool-checkbox" />
+            <Checkbox
+              color="primary"
+              className="tool-checkbox"
+              onChange={() => handleToolSelection(tool)}
+            />
+
             <CardMedia
               component="img"
               alt={tool.name}
@@ -227,6 +251,13 @@ const ToolList = ({ selectedOS }: { selectedOS: string }) => {
           </Card>
         ))}
       </div>
+      {selectedTools.length > 0 && (
+        <div className="proceed-section">
+          <Button variant="contained" endIcon={<ArrowRightAlt />}>
+            Continue installation ({selectedTools.length})
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

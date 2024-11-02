@@ -1,4 +1,4 @@
-interface Tool {
+export interface Tool {
   category: string;
   subcategory?: string;
   name: string;

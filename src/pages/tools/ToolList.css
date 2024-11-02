@@ -1,7 +1,7 @@
 .tool-list {
-  padding: 2rem;
   font-family: "Poppins", sans-serif !important;
   color: #333;
+  width: 100%;
 }
 
 .os-selector {
@@ -102,6 +102,19 @@
 .card-link:hover {
   background-color: rgb(255, 145, 48);
   color: rgb(255, 255, 255);
+}
+
+.proceed-section {
+  position: sticky;
+  bottom: 20px;
+  /* width: 100%; */
+  left: auto;
+  right: auto;
+  background-color: transparent;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 @media (max-width: 600px) {
