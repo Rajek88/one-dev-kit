@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import "./ToolList.css";
 import { tools } from "./Tools";
+import { CloudDownload } from "@mui/icons-material";
 
 const ToolList: React.FC = () => {
   const [selectedOS, setSelectedOS] = useState<"mac" | "windows" | "linux">(
@@ -49,16 +50,18 @@ const ToolList: React.FC = () => {
               className="card-image"
             />
             <CardContent>
-              <Typography variant="h6" className="card-title">
-                {tool.name}
-              </Typography>
-              <Typography
-                variant="subtitle2"
-                color="textSecondary"
-                className="card-category"
-              >
-                {tool.category} {tool.subcategory && `- ${tool.subcategory}`}
-              </Typography>
+              <div className="toolname-header">
+                <Typography variant="h6" className="card-title">
+                  {tool.name}
+                </Typography>
+                <Typography
+                  variant="subtitle2"
+                  color="textSecondary"
+                  className="card-category"
+                >
+                  {tool.category} {tool.subcategory && `- ${tool.subcategory}`}
+                </Typography>
+              </div>
               <Typography
                 variant="body2"
                 color="textSecondary"
@@ -66,12 +69,12 @@ const ToolList: React.FC = () => {
               >
                 {tool.description}
               </Typography>
+              {/* <p>Install Command ({selectedOS}): </p> */}
               <Typography
                 variant="body2"
                 color="textSecondary"
                 className="install-command"
               >
-                Install Command ({selectedOS}):{" "}
                 <code>{tool.installCommands[selectedOS]}</code>
               </Typography>
               <Button
@@ -80,6 +83,7 @@ const ToolList: React.FC = () => {
                 href={tool.url}
                 target="_blank"
                 className="card-link"
+                endIcon={<CloudDownload />}
               >
                 Download
               </Button>

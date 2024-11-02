@@ -18,7 +18,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem; /* Space between cards */
+  gap: 10px; /* Space between cards */
 }
 
 .tool-card {
@@ -29,7 +29,7 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
-  width: 300px; /* Fixed width for cards */
+  width: 200px; /* Fixed width for cards */
 }
 
 .tool-checkbox {
@@ -38,13 +38,21 @@
 }
 
 .card-image {
-  object-fit: contain;
+  object-fit: contain !important;
+  height: 80px;
 }
 
 .card-title {
   font-weight: bold;
   margin: 0.5rem 0;
   text-align: center;
+}
+
+.toolname-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .card-category {
@@ -54,7 +62,7 @@
 }
 
 .card-description {
-  text-align: center;
+  text-align: start;
   margin: 0.5rem 0;
 }
 
@@ -66,6 +74,7 @@
   text-align: center;
   margin: 0.5rem 0;
   word-wrap: break-word;
+  margin: 10px 0 !important;
 }
 
 .card-link {

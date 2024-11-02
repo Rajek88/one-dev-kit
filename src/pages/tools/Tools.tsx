@@ -19,7 +19,7 @@ export const tools: Tool[] = [
     description:
       "A tool that helps you save and track changes to your code, like saving different versions of your work.",
     url: "https://git-scm.com/download",
-    image: "/images/git.png",
+    image: "https://git-scm.com/images/logo@2x.png",
     installCommands: {
       mac: "brew install git",
       windows: "choco install git",
@@ -32,7 +32,7 @@ export const tools: Tool[] = [
     description:
       "A program that helps you run JavaScript (a coding language) outside of a browser, so you can create apps with it.",
     url: "https://nodejs.org/en/download/",
-    image: "/images/nodejs.png",
+    image: "https://nodejs.org/static/logos/nodejsDark.svg",
     installCommands: {
       mac: "brew install node",
       windows: "choco install nodejs",
@@ -45,7 +45,8 @@ export const tools: Tool[] = [
     description:
       'A tool that packages all parts of an app so it works the same on any computer, like a "to-go" box for software.',
     url: "https://www.docker.com/products/docker-desktop/",
-    image: "/images/docker.png",
+    image:
+      "https://www.docker.com/wp-content/uploads/2023/08/logo-guide-logos-1.svg",
     installCommands: {
       mac: "brew install --cask docker",
       windows: "choco install docker-desktop",
@@ -58,7 +59,8 @@ export const tools: Tool[] = [
     description:
       "A place to find and download code tools for JavaScript; it helps you install and manage these tools easily.",
     url: "https://www.npmjs.com/get-npm",
-    image: "/images/npm.png",
+    image:
+      "https://github.com/npm/logos/blob/master/npm%20logo/npm-logo-black.png?raw=true",
     installCommands: {
       mac: "brew install npm",
       windows: "choco install npm",
@@ -71,7 +73,7 @@ export const tools: Tool[] = [
     description:
       "A software that helps you write code, with features like highlighting words and suggesting corrections.",
     url: "https://code.visualstudio.com/download",
-    image: "/images/vscode.png",
+    image: "https://code.visualstudio.com/assets/images/code-stable.png",
     installCommands: {
       mac: "brew install --cask visual-studio-code",
       windows: "choco install vscode",
@@ -91,19 +93,7 @@ export const tools: Tool[] = [
       linux: "sudo snap install postman",
     },
   },
-  {
-    category: "Productivity",
-    name: "ESLint",
-    description:
-      "A tool that checks your JavaScript code for errors, like a spelling checker for coding.",
-    url: "https://eslint.org/docs/latest",
-    image: "/images/eslint.png",
-    installCommands: {
-      mac: "npm install -g eslint",
-      windows: "npm install -g eslint",
-      linux: "npm install -g eslint",
-    },
-  },
+
   {
     category: "Platform",
     subcategory: "Mobile App",
@@ -111,7 +101,7 @@ export const tools: Tool[] = [
     description:
       "A tool that lets you write one set of code to create apps for both iPhones and Android phones.",
     url: "https://reactnative.dev/docs/environment-setup",
-    image: "/images/react-native.png",
+    image: "https://reactnative.dev/img/header_logo.svg",
     installCommands: {
       mac: "npm install -g react-native-cli",
       windows: "npm install -g react-native-cli",
@@ -125,7 +115,8 @@ export const tools: Tool[] = [
     description:
       "A tool from Google to create smooth and colorful apps for phones, the web, and desktops.",
     url: "https://flutter.dev/docs/get-started/install",
-    image: "/images/flutter.png",
+    image:
+      "https://storage.googleapis.com/cms-storage-bucket/6a07d8a62f4308d2b854.svg",
     installCommands: {
       mac: "brew install --cask flutter",
       windows: "choco install flutter",
@@ -139,7 +130,8 @@ export const tools: Tool[] = [
     description:
       "A program from Google to make Android phone apps, with tools to design and test the apps.",
     url: "https://developer.android.com/studio",
-    image: "/images/android-studio.png",
+    image:
+      "https://developer.android.com/static/studio/images/android-studio-stable.svg",
     installCommands: {
       mac: "brew install --cask android-studio",
       windows: "choco install android-studio",
@@ -153,7 +145,7 @@ export const tools: Tool[] = [
     description:
       "A tool from Facebook to help make fast, interactive websites by organizing code in a simple way.",
     url: "https://reactjs.org/docs/getting-started.html",
-    image: "/images/react.png",
+    image: "https://react.dev/images/brand/logo_light.svg",
     installCommands: {
       mac: "npm install -g create-react-app",
       windows: "npm install -g create-react-app",
@@ -167,7 +159,7 @@ export const tools: Tool[] = [
     description:
       "A helper for Node.js that makes creating servers (for handling website data) much simpler and faster.",
     url: "https://expressjs.com/",
-    image: "/images/express.png",
+    image: "https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png",
     installCommands: {
       mac: "npm install -g express",
       windows: "npm install -g express",
