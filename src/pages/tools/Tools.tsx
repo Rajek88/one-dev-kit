@@ -80,11 +80,24 @@ export const envTools: Tool[] = [
       linux: "sudo apt install npm",
     },
   },
+  {
+    category: "Essentials",
+    name: "Python",
+    description:
+      "A versatile and popular programming language used for web development, data analysis, artificial intelligence, and more.",
+    url: "https://www.python.org/downloads/",
+    image: "https://www.python.org/static/community_logos/python-logo.png",
+    installCommands: {
+      mac: "brew install python",
+      windows: "choco install python",
+      linux: "sudo apt install python3",
+    },
+  },
 ];
 
 export const testTools: Tool[] = [
   {
-    category: "Test",
+    category: "Dev-Test",
     name: "Postman",
     description:
       "A tool that helps you test and send data to servers, like checking if a login page works.",
@@ -154,6 +167,21 @@ export const platformTools: Tool[] = [
     },
   },
   {
+    category: "Platform",
+    subcategory: "Desktop App",
+    name: "Electron",
+    description:
+      "A framework for building cross-platform desktop applications with web technologies like JavaScript, HTML, and CSS.",
+    url: "https://www.electronjs.org/docs/latest",
+    image: "https://www.electronjs.org/assets/img/logo.svg",
+    installCommands: {
+      mac: "npm install -g electron",
+      windows: "npm install -g electron",
+      linux: "npm install -g electron",
+    },
+  },
+
+  {
     category: "Backend",
     name: "Express",
     description:
@@ -164,6 +192,50 @@ export const platformTools: Tool[] = [
       mac: "npm install -g express",
       windows: "npm install -g express",
       linux: "npm install -g express",
+    },
+  },
+  {
+    category: "Platform",
+    subcategory: "Backend",
+    name: "FastAPI",
+    description:
+      "A modern, fast (high-performance) web framework for building APIs with Python, based on standard Python type hints.",
+    url: "https://fastapi.tiangolo.com/",
+    image: "https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png",
+    installCommands: {
+      mac: "pip install fastapi",
+      windows: "pip install fastapi",
+      linux: "pip install fastapi",
+    },
+  },
+  {
+    category: "Platform",
+    subcategory: "Backend",
+    name: "Flask",
+    description:
+      "A lightweight WSGI web application framework in Python, great for simple web applications and RESTful APIs.",
+    url: "https://flask.palletsprojects.com/",
+    image:
+      "https://flask.palletsprojects.com/en/stable/_images/flask-horizontal.png",
+    installCommands: {
+      mac: "pip install flask",
+      windows: "pip install flask",
+      linux: "pip install flask",
+    },
+  },
+  {
+    category: "Platform",
+    subcategory: "Backend",
+    name: "Django",
+    description:
+      "A high-level Python web framework that encourages rapid development and clean, pragmatic design.",
+    url: "https://www.djangoproject.com/download/",
+    image:
+      "https://static.djangoproject.com/img/logos/django-logo-negative.png",
+    installCommands: {
+      mac: "pip install django",
+      windows: "pip install django",
+      linux: "pip install django",
     },
   },
 ];
