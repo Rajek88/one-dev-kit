@@ -1,45 +1,21 @@
-import React, { useState } from "react";
 import {
   Card,
   CardContent,
   CardMedia,
   Checkbox,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
   Typography,
   Button,
 } from "@mui/material";
 import "./ToolList.css";
-import { tools } from "./Tools";
 import { CloudDownload } from "@mui/icons-material";
+import { envTools, platformTools, testTools } from "./Tools";
 
-const ToolList: React.FC = () => {
-  const [selectedOS, setSelectedOS] = useState<"mac" | "windows" | "linux">(
-    "mac"
-  );
-
+const ToolList = ({ selectedOS }: { selectedOS: string }) => {
   return (
     <div className="tool-list">
-      <Typography variant="h4" component="h1" className="tool-list-title">
-        Developer Tools and Resources
-      </Typography>
-      <FormControl fullWidth className="os-selector">
-        <InputLabel>Select OS</InputLabel>
-        <Select
-          value={selectedOS}
-          onChange={(e) =>
-            setSelectedOS(e.target.value as "mac" | "windows" | "linux")
-          }
-        >
-          <MenuItem value="mac">Mac</MenuItem>
-          <MenuItem value="windows">Windows</MenuItem>
-          <MenuItem value="linux">Linux</MenuItem>
-        </Select>
-      </FormControl>
+      <h2 className="tooltype-heading">Setup Tools</h2>
       <div className="tool-card-container">
-        {tools.map((tool, index) => (
+        {envTools.map((tool, index) => (
           <Card className="tool-card" key={index}>
             <Checkbox color="primary" className="tool-checkbox" />
             <CardMedia
@@ -75,7 +51,132 @@ const ToolList: React.FC = () => {
                 color="textSecondary"
                 className="install-command"
               >
-                <code>{tool.installCommands[selectedOS]}</code>
+                <code>
+                  {
+                    // @ts-ignore
+                    tool.installCommands[selectedOS]
+                  }
+                </code>
+              </Typography>
+              <Button
+                variant="contained"
+                color="primary"
+                href={tool.url}
+                target="_blank"
+                className="card-link"
+                endIcon={<CloudDownload />}
+              >
+                Download
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      <h2 className="tooltype-heading">Dev and Test Tools</h2>
+      <div className="tool-card-container">
+        {testTools.map((tool, index) => (
+          <Card className="tool-card" key={index}>
+            <Checkbox color="primary" className="tool-checkbox" />
+            <CardMedia
+              component="img"
+              alt={tool.name}
+              height="140"
+              image={tool.image}
+              className="card-image"
+            />
+            <CardContent>
+              <div className="toolname-header">
+                <Typography variant="h6" className="card-title">
+                  {tool.name}
+                </Typography>
+                <Typography
+                  variant="subtitle2"
+                  color="textSecondary"
+                  className="card-category"
+                >
+                  {tool.category} {tool.subcategory && `- ${tool.subcategory}`}
+                </Typography>
+              </div>
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                className="card-description"
+              >
+                {tool.description}
+              </Typography>
+              {/* <p>Install Command ({selectedOS}): </p> */}
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                className="install-command"
+              >
+                <code>
+                  {
+                    // @ts-ignore
+                    tool.installCommands[selectedOS]
+                  }
+                </code>
+              </Typography>
+              <Button
+                variant="contained"
+                color="primary"
+                href={tool.url}
+                target="_blank"
+                className="card-link"
+                endIcon={<CloudDownload />}
+              >
+                Download
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      <h2 className="tooltype-heading">Platform Libraries & Tools</h2>
+      <div className="tool-card-container">
+        {platformTools.map((tool, index) => (
+          <Card className="tool-card" key={index}>
+            <Checkbox color="primary" className="tool-checkbox" />
+            <CardMedia
+              component="img"
+              alt={tool.name}
+              height="140"
+              image={tool.image}
+              className="card-image"
+            />
+            <CardContent>
+              <div className="toolname-header">
+                <Typography variant="h6" className="card-title">
+                  {tool.name}
+                </Typography>
+                <Typography
+                  variant="subtitle2"
+                  color="textSecondary"
+                  className="card-category"
+                >
+                  {tool.category} {tool.subcategory && `- ${tool.subcategory}`}
+                </Typography>
+              </div>
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                className="card-description"
+              >
+                {tool.description}
+              </Typography>
+              {/* <p>Install Command ({selectedOS}): </p> */}
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                className="install-command"
+              >
+                <code>
+                  {
+                    // @ts-ignore
+                    tool.installCommands[selectedOS]
+                  }
+                </code>
               </Typography>
               <Button
                 variant="contained"

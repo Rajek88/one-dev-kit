@@ -12,7 +12,20 @@ interface Tool {
   };
 }
 
-export const tools: Tool[] = [
+export const envTools: Tool[] = [
+  {
+    category: "Essentials",
+    name: "Visual Studio Code",
+    description:
+      "A software that helps you write code, with features like highlighting words and suggesting corrections.",
+    url: "https://code.visualstudio.com/download",
+    image: "https://code.visualstudio.com/assets/images/code-stable.png",
+    installCommands: {
+      mac: "brew install --cask visual-studio-code",
+      windows: "choco install vscode",
+      linux: "sudo snap install code --classic",
+    },
+  },
   {
     category: "Essentials",
     name: "Git",
@@ -67,21 +80,11 @@ export const tools: Tool[] = [
       linux: "sudo apt install npm",
     },
   },
+];
+
+export const testTools: Tool[] = [
   {
-    category: "Productivity",
-    name: "Visual Studio Code",
-    description:
-      "A software that helps you write code, with features like highlighting words and suggesting corrections.",
-    url: "https://code.visualstudio.com/download",
-    image: "https://code.visualstudio.com/assets/images/code-stable.png",
-    installCommands: {
-      mac: "brew install --cask visual-studio-code",
-      windows: "choco install vscode",
-      linux: "sudo snap install code --classic",
-    },
-  },
-  {
-    category: "Productivity",
+    category: "Test",
     name: "Postman",
     description:
       "A tool that helps you test and send data to servers, like checking if a login page works.",
@@ -93,10 +96,11 @@ export const tools: Tool[] = [
       linux: "sudo snap install postman",
     },
   },
+];
 
+export const platformTools: Tool[] = [
   {
-    category: "Platform",
-    subcategory: "Mobile App",
+    category: "Mobile App",
     name: "React Native",
     description:
       "A tool that lets you write one set of code to create apps for both iPhones and Android phones.",
@@ -109,8 +113,7 @@ export const tools: Tool[] = [
     },
   },
   {
-    category: "Platform",
-    subcategory: "Mobile App",
+    category: "Mobile App",
     name: "Flutter",
     description:
       "A tool from Google to create smooth and colorful apps for phones, the web, and desktops.",
@@ -124,8 +127,7 @@ export const tools: Tool[] = [
     },
   },
   {
-    category: "Platform",
-    subcategory: "Mobile App",
+    category: "Mobile App",
     name: "Android Studio",
     description:
       "A program from Google to make Android phone apps, with tools to design and test the apps.",
@@ -139,8 +141,7 @@ export const tools: Tool[] = [
     },
   },
   {
-    category: "Platform",
-    subcategory: "Web App - Frontend",
+    category: "Web App - Frontend",
     name: "React",
     description:
       "A tool from Facebook to help make fast, interactive websites by organizing code in a simple way.",
@@ -153,8 +154,7 @@ export const tools: Tool[] = [
     },
   },
   {
-    category: "Platform",
-    subcategory: "Backend",
+    category: "Backend",
     name: "Express",
     description:
       "A helper for Node.js that makes creating servers (for handling website data) much simpler and faster.",

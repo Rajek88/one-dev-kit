@@ -18,6 +18,31 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+.navbar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0%;
+  padding: 10px 0;
+  background-color: transparent;
+  backdrop-filter: blur(5px);
+  z-index: 1;
+}
+
+.navbar-title {
+  text-align: start;
+  /* margin-bottom: 1.5rem; */
+  color: black;
+}
+
+.logo-desc {
+  color: #888;
+  margin: 0;
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
