@@ -12,7 +12,7 @@ import {
 import "./ToolList.css";
 import { ArrowRightAlt, CloudDownload } from "@mui/icons-material";
 import { envTools, platformTools, testTools, Tool } from "./Tools";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import CustomizedDialogs from "../../components/popup/CustomizedDialogs";
 
 const ToolList = ({ selectedOS }: { selectedOS: string }) => {
@@ -271,13 +271,13 @@ const ToolList = ({ selectedOS }: { selectedOS: string }) => {
               <code className="code">
                 {selectedTools.map((tool, index) => {
                   return (
-                    <>
+                    <Fragment key={index}>
                       {
                         // @ts-ignore
                         tool.installCommands[selectedOS]
                       }
                       <br />
-                    </>
+                    </Fragment>
                   );
                 })}
               </code>
