@@ -167,3 +167,79 @@ export const platformTools: Tool[] = [
     },
   },
 ];
+
+export const dbTools: Tool[] = [
+  {
+    category: "Database",
+    subcategory: "SQL",
+    name: "PostgreSQL",
+    description:
+      "A powerful, open-source database system that helps store and manage large amounts of data securely.",
+    url: "https://www.postgresql.org/download/",
+    image:
+      "https://wiki.postgresql.org/images/thumb/a/a4/PostgreSQL_logo.3colors.svg/540px-PostgreSQL_logo.3colors.svg.png",
+    installCommands: {
+      mac: "brew install postgresql",
+      windows: "choco install postgresql",
+      linux: "sudo apt install postgresql",
+    },
+  },
+  {
+    category: "Database",
+    subcategory: "SQL",
+    name: "MySQL",
+    description:
+      "A widely used database system that organizes and stores data, commonly used in web applications.",
+    url: "https://dev.mysql.com/downloads/",
+    image: "https://www.mysql.com/common/logos/logo-mysql-170x115.png",
+    installCommands: {
+      mac: "brew install mysql",
+      windows: "choco install mysql",
+      linux: "sudo apt install mysql-server",
+    },
+  },
+  {
+    category: "Database",
+    subcategory: "No-SQL",
+    name: "MongoDB",
+    description:
+      "A popular NoSQL database that stores data in a flexible format, great for handling large and varied datasets.",
+    url: "https://www.mongodb.com/try/download/community",
+    image:
+      "https://webimages.mongodb.com/_com_assets/cms/kuyjf3vea2hg34taa-horizontal_default_slate_blue.svg?auto=format%252Ccompress",
+    installCommands: {
+      mac: "brew tap mongodb/brew && brew install mongodb-community",
+      windows: "choco install mongodb",
+      linux: "sudo apt install -y mongodb",
+    },
+  },
+  {
+    category: "Database",
+    subcategory: "GUI",
+    name: "pgAdmin",
+    description:
+      "A management tool for PostgreSQL databases, with features for running SQL queries, visualizing data, and more.",
+    url: "https://www.pgadmin.org/download/",
+    image: "https://www.postgresql.org/media/img/about/press/elephant.png",
+    installCommands: {
+      mac: "brew install --cask pgadmin4",
+      windows: "choco install pgadmin4",
+      linux: "sudo apt install pgadmin4",
+    },
+  },
+  {
+    category: "Database",
+    subcategory: "GUI",
+    name: "MongoDB Compass",
+    description:
+      "An intuitive GUI for MongoDB, allowing users to explore and interact with their MongoDB data.",
+    url: "https://www.mongodb.com/try/download/compass",
+    image:
+      "https://images.contentstack.io/v3/assets/blt7151619cb9560896/blt5b387e6afdd329fb/655cedcc36b54587cdcd5425/compass-search.svg",
+    installCommands: {
+      mac: "brew install --cask mongodb-compass",
+      windows: "choco install mongodb-compass",
+      linux: "sudo snap install mongodb-compass",
+    },
+  },
+];

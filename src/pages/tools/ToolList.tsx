@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import "./ToolList.css";
 import { ArrowRightAlt, CloudDownload } from "@mui/icons-material";
-import { envTools, platformTools, testTools, Tool } from "./Tools";
+import { dbTools, envTools, platformTools, testTools, Tool } from "./Tools";
 import { Fragment, useState } from "react";
 import CustomizedDialogs from "../../components/popup/CustomizedDialogs";
 
@@ -235,6 +235,71 @@ const ToolList = ({ selectedOS }: { selectedOS: string }) => {
       <h2 className="tooltype-heading">Platform Libraries & Tools</h2>
       <div className="tool-card-container">
         {platformTools.map((tool, index) => (
+          <Card className="tool-card" key={index}>
+            <Checkbox
+              color="primary"
+              className="tool-checkbox"
+              onChange={() => handleToolSelection(tool)}
+            />
+
+            <CardMedia
+              component="img"
+              alt={tool.name}
+              height="140"
+              image={tool.image}
+              className="card-image"
+            />
+            <CardContent>
+              <div className="toolname-header">
+                <Typography variant="h6" className="card-title">
+                  {tool.name}
+                </Typography>
+                <Typography
+                  variant="subtitle2"
+                  color="textSecondary"
+                  className="card-category"
+                >
+                  {tool.category} {tool.subcategory && `- ${tool.subcategory}`}
+                </Typography>
+              </div>
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                className="card-description"
+              >
+                {tool.description}
+              </Typography>
+              {/* <p>Install Command ({selectedOS}): </p> */}
+              <Typography
+                variant="body2"
+                color="textSecondary"
+                className="install-command"
+              >
+                <code className="code" onClick={() => handleCopyClick(tool)}>
+                  {
+                    // @ts-ignore
+                    tool.installCommands[selectedOS]
+                  }
+                </code>
+              </Typography>
+              <Button
+                variant="contained"
+                color="primary"
+                href={tool.url}
+                target="_blank"
+                className="card-link"
+                endIcon={<CloudDownload />}
+              >
+                Download
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      <h2 className="tooltype-heading">Database and GUI Tools</h2>
+      <div className="tool-card-container">
+        {dbTools.map((tool, index) => (
           <Card className="tool-card" key={index}>
             <Checkbox
               color="primary"
