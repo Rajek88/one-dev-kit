@@ -1,0 +1,94 @@
+.tool-list {
+  padding: 2rem;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.tool-list-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.os-selector {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.tool-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem; /* Space between cards */
+}
+
+.tool-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  width: 300px; /* Fixed width for cards */
+}
+
+.tool-checkbox {
+  align-self: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.card-image {
+  object-fit: contain;
+}
+
+.card-title {
+  font-weight: bold;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+.card-category {
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.card-description {
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.install-command {
+  font-size: 0.9rem;
+  background-color: #f4f4f4;
+  padding: 0.5rem;
+  border-radius: 4px;
+  text-align: center;
+  margin: 0.5rem 0;
+  word-wrap: break-word;
+}
+
+.card-link {
+  width: 100%;
+  text-align: center;
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+@media (max-width: 600px) {
+  .tool-card {
+    width: 90%; /* Full width on small screens */
+  }
+}
+
+@media (min-width: 600px) and (max-width: 960px) {
+  .tool-card {
+    width: 45%; /* Two cards per row on medium screens */
+  }
+}
+
+@media (min-width: 960px) {
+  .tool-card {
+    width: 30%; /* Three cards per row on larger screens */
+  }
+}
