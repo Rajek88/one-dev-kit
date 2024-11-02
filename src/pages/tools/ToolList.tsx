@@ -73,7 +73,7 @@ const ToolList = ({ selectedOS }: { selectedOS: string }) => {
   // console.log({ selectedTools });
 
   const handleCopyClose = (
-    event?: React.SyntheticEvent | Event,
+    _event?: React.SyntheticEvent | Event,
     reason?: SnackbarCloseReason
   ) => {
     if (reason === "clickaway") {
