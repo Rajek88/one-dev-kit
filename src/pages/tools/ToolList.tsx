@@ -13,6 +13,7 @@ import "./ToolList.css";
 import { ArrowRightAlt, CloudDownload } from "@mui/icons-material";
 import { envTools, platformTools, testTools, Tool } from "./Tools";
 import { useState } from "react";
+import CustomizedDialogs from "../../components/popup/CustomizedDialogs";
 
 const ToolList = ({ selectedOS }: { selectedOS: string }) => {
   const [showNotification, setShowNotification] = useState(false);
@@ -257,6 +258,34 @@ const ToolList = ({ selectedOS }: { selectedOS: string }) => {
             Continue installation ({selectedTools.length})
           </Button>
         </div>
+      )}
+      {selectedTools.length > 0 && (
+        <CustomizedDialogs
+          title="Run scripts to install"
+          desc={
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              className="final-script"
+            >
+              <code className="code">
+                {selectedTools.map((tool, index) => {
+                  return (
+                    <>
+                      {
+                        // @ts-ignore
+                        tool.installCommands[selectedOS]
+                      }
+                      <br />
+                    </>
+                  );
+                })}
+              </code>
+            </Typography>
+          }
+          buttonTitle="Copy"
+          buttonOnClick={handleCopyClick}
+        />
       )}
     </div>
   );
