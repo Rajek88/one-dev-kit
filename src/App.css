@@ -42,6 +42,7 @@
 .logo-desc {
   color: #888;
   margin: 0;
+  text-align: start;
 }
 
 @keyframes logo-spin {
@@ -53,16 +54,19 @@
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
 .card {
   padding: 2em;
 }
 
 .read-the-docs {
   color: #888;
+}
+
+@media (max-width: 600px) {
+  .navbar-title {
+    font-size: larger !important;
+  }
+  .logo-desc {
+    font-size: smaller !important;
+  }
 }

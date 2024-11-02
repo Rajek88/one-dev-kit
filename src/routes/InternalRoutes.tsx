@@ -5,7 +5,7 @@ import ToolList from "../pages/tools/ToolList";
 const InternalRoutes = ({ selectedOS }: { selectedOS: string }) => {
   return (
     <Routes>
-      <Route path="/" element={<ToolList selectedOS={selectedOS} />} />
+      <Route path="*" element={<ToolList selectedOS={selectedOS} />} />
       {/* <Route path="/projects" element={<Project />} /> */}
     </Routes>
   );

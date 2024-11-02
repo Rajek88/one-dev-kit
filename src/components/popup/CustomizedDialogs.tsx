@@ -1,4 +1,3 @@
-import * as React from "react";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
@@ -8,6 +7,7 @@ import DialogActions from "@mui/material/DialogActions";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { CopyAll } from "@mui/icons-material";
+import "./CustomizedDialogs.css";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -23,28 +23,20 @@ export default function CustomizedDialogs({
   desc,
   buttonTitle,
   buttonOnClick,
+  open,
+  setOpen,
 }: {
   title: string;
   desc: any;
   buttonTitle: string;
   buttonOnClick: () => void;
+  open: boolean;
+  setOpen: (param: boolean) => void;
 }) {
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   return (
-    <React.Fragment>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Open dialog
-      </Button>
+    <>
       <BootstrapDialog
-        onClose={handleClose}
+        onClose={() => setOpen(false)}
         aria-labelledby="customized-dialog-title"
         open={open}
       >
@@ -53,7 +45,7 @@ export default function CustomizedDialogs({
         </DialogTitle>
         <IconButton
           aria-label="close"
-          onClick={handleClose}
+          onClick={() => setOpen(false)}
           sx={(theme) => ({
             position: "absolute",
             right: 8,
@@ -75,6 +67,6 @@ export default function CustomizedDialogs({
           </Button>
         </DialogActions>
       </BootstrapDialog>
-    </React.Fragment>
+    </>
   );
 }

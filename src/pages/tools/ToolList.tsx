@@ -16,8 +16,28 @@ import { Fragment, useState } from "react";
 import CustomizedDialogs from "../../components/popup/CustomizedDialogs";
 
 const ToolList = ({ selectedOS }: { selectedOS: string }) => {
+  const [openModal, setOpenModal] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
+
   const [selectedTools, setSelectedTools] = useState<Tool[]>([]); // Change to store Tool objects
+
+  function simplifyCommands(commands: string[]): string {
+    const groupedCommands = commands.reduce(
+      (acc: Record<string, string[]>, cmd: string) => {
+        const [manager, ...rest] = cmd.split(" ");
+        if (!acc[manager]) acc[manager] = [];
+        acc[manager].push(rest.join(" "));
+        return acc;
+      },
+      {}
+    );
+
+    return Object.entries(groupedCommands)
+      .map(
+        ([manager, cmds]) => `${manager} ${cmds.join(" && " + manager + " ")}`
+      )
+      .join(" && ");
+  }
 
   const handleToolSelection = (tool: Tool) => {
     setSelectedTools((prev) =>
@@ -27,8 +47,28 @@ const ToolList = ({ selectedOS }: { selectedOS: string }) => {
     );
   };
 
-  const handleCopyClick = () => {
-    setShowNotification(true);
+  const handleCopyAllToolsCmd = async () => {
+    const commands = [];
+    for (const tool of selectedTools) {
+      // @ts-ignore
+      commands.push(tool.installCommands?.[selectedOS]);
+    }
+    // now get the installation command and copy to clipboard
+    const oneLinerCmd = simplifyCommands(commands);
+    if (oneLinerCmd) {
+      await navigator.clipboard.writeText(oneLinerCmd).then(() => {
+        setShowNotification(true);
+      });
+    }
+  };
+
+  const handleCopyClick = async (tool: any) => {
+    const text = tool.installCommands[selectedOS];
+    if (text) {
+      await navigator.clipboard.writeText(text).then(() => {
+        setShowNotification(true);
+      });
+    }
   };
   // console.log({ selectedTools });
 
@@ -41,6 +81,10 @@ const ToolList = ({ selectedOS }: { selectedOS: string }) => {
     }
 
     setShowNotification(false);
+  };
+
+  const handleClickOpenModal = () => {
+    setOpenModal(true);
   };
 
   return (
@@ -101,7 +145,7 @@ const ToolList = ({ selectedOS }: { selectedOS: string }) => {
                 color="textSecondary"
                 className="install-command"
               >
-                <code className="code" onClick={handleCopyClick}>
+                <code className="code" onClick={() => handleCopyClick(tool)}>
                   {
                     // @ts-ignore
                     tool.installCommands[selectedOS]
@@ -166,7 +210,7 @@ const ToolList = ({ selectedOS }: { selectedOS: string }) => {
                 color="textSecondary"
                 className="install-command"
               >
-                <code className="code" onClick={handleCopyClick}>
+                <code className="code" onClick={() => handleCopyClick(tool)}>
                   {
                     // @ts-ignore
                     tool.installCommands[selectedOS]
@@ -231,7 +275,7 @@ const ToolList = ({ selectedOS }: { selectedOS: string }) => {
                 color="textSecondary"
                 className="install-command"
               >
-                <code className="code" onClick={handleCopyClick}>
+                <code className="code" onClick={() => handleCopyClick(tool)}>
                   {
                     // @ts-ignore
                     tool.installCommands[selectedOS]
@@ -254,7 +298,11 @@ const ToolList = ({ selectedOS }: { selectedOS: string }) => {
       </div>
       {selectedTools.length > 0 && (
         <div className="proceed-section">
-          <Button variant="contained" endIcon={<ArrowRightAlt />}>
+          <Button
+            onClick={handleClickOpenModal}
+            variant="contained"
+            endIcon={<ArrowRightAlt />}
+          >
             Continue installation ({selectedTools.length})
           </Button>
         </div>
@@ -284,7 +332,9 @@ const ToolList = ({ selectedOS }: { selectedOS: string }) => {
             </Typography>
           }
           buttonTitle="Copy"
-          buttonOnClick={handleCopyClick}
+          buttonOnClick={() => handleCopyAllToolsCmd()}
+          setOpen={setOpenModal}
+          open={openModal}
         />
       )}
     </div>
