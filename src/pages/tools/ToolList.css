@@ -88,6 +88,10 @@
   /* width: 100%; */
 }
 
+.install-command .code {
+  cursor: copy;
+}
+
 .card-link {
   width: 100%;
   text-align: center;

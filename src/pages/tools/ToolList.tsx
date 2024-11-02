@@ -5,14 +5,49 @@ import {
   Checkbox,
   Typography,
   Button,
+  SnackbarCloseReason,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import "./ToolList.css";
 import { CloudDownload } from "@mui/icons-material";
 import { envTools, platformTools, testTools } from "./Tools";
+import { useState } from "react";
 
 const ToolList = ({ selectedOS }: { selectedOS: string }) => {
+  const [showNotification, setShowNotification] = useState(false);
+
+  const handleCopyClick = () => {
+    setShowNotification(true);
+  };
+
+  const handleCopyClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setShowNotification(false);
+  };
+
   return (
     <div className="tool-list">
+      <Snackbar
+        open={showNotification}
+        autoHideDuration={6000}
+        onClose={handleCopyClose}
+      >
+        <Alert
+          onClose={handleCopyClose}
+          severity="success"
+          variant="filled"
+          sx={{ width: "100%" }}
+        >
+          This is a success Alert inside a Snackbar!
+        </Alert>
+      </Snackbar>
       <h2 className="tooltype-heading">Setup Tools</h2>
       <div className="tool-card-container">
         {envTools.map((tool, index) => (
@@ -51,7 +86,7 @@ const ToolList = ({ selectedOS }: { selectedOS: string }) => {
                 color="textSecondary"
                 className="install-command"
               >
-                <code>
+                <code className="code" onClick={handleCopyClick}>
                   {
                     // @ts-ignore
                     tool.installCommands[selectedOS]
@@ -111,7 +146,7 @@ const ToolList = ({ selectedOS }: { selectedOS: string }) => {
                 color="textSecondary"
                 className="install-command"
               >
-                <code>
+                <code className="code" onClick={handleCopyClick}>
                   {
                     // @ts-ignore
                     tool.installCommands[selectedOS]
@@ -171,7 +206,7 @@ const ToolList = ({ selectedOS }: { selectedOS: string }) => {
                 color="textSecondary"
                 className="install-command"
               >
-                <code>
+                <code className="code" onClick={handleCopyClick}>
                   {
                     // @ts-ignore
                     tool.installCommands[selectedOS]
