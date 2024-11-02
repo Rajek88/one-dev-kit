@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./App.css";
-import ToolList from "./pages/tools/ToolList";
 import {
   FormControl,
   InputLabel,
@@ -8,7 +7,6 @@ import {
   Select,
   Typography,
 } from "@mui/material";
-import { Routes } from "react-router-dom";
 import InternalRoutes from "./routes/InternalRoutes";
 
 function App() {
@@ -40,7 +38,9 @@ function App() {
           </Select>
         </FormControl>
       </div>
-      <InternalRoutes selectedOS={selectedOS} />
+      <div className="page">
+        <InternalRoutes selectedOS={selectedOS} />
+      </div>
     </>
   );
 }
